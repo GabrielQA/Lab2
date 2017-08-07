@@ -6,6 +6,8 @@
 package lab2;
 
 import java.util.Scanner;
+import static javafx.scene.input.KeyCode.A;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,13 +20,15 @@ public class Matriz extends javax.swing.JFrame {
      */
     public Matriz() {
         initComponents();
-    }
-    public void Matriza(){
-        
+        Matriza();
     }
 
-    public void CreacionDeMatriz() {
-        final int FILAS = 5, COLUMNAS = 4;
+    public void Matriza() {
+
+    }
+
+    /*public void CreacionDeMatriz() {
+        int FILAS = 5, COLUMNAS = 4;
         Scanner sc = new Scanner(System.in);
         int i, j, mayor, menor;
         int filaMayor, filaMenor, colMayor, colMenor;
@@ -37,12 +41,7 @@ public class Matriz extends javax.swing.JFrame {
             }
         }
         System.out.println("valores introducidos:");
-        for (i = 0; i < A.length; i++) { 
-            for (j = 0; j < A[i].length; j++) {
-                System.out.print(A[i][j] + " ");
-            }
-            System.out.println();
-        }
+        
         mayor = menor = A[0][0];//se toma el primero como mayor y menor
         filaMayor = filaMenor = colMayor = colMenor = 0;
 
@@ -59,11 +58,7 @@ public class Matriz extends javax.swing.JFrame {
                 }
             }           
         }
-        System.out.print("Elemento mayor: " + mayor);
-        System.out.println(" Fila: "+ filaMayor + " Columna: " + colMayor);
-        System.out.print("Elemento menor: " + menor);
-        System.out.println(" Fila: "+ filaMenor + " Columna: " + colMenor);
-    
+       
     }
 
     /**
@@ -76,12 +71,12 @@ public class Matriz extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        Q = new javax.swing.JTable();
         A = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        Q.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -89,7 +84,7 @@ public class Matriz extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(Q);
 
         A.setText("Iniciar");
         A.addActionListener(new java.awt.event.ActionListener() {
@@ -126,7 +121,23 @@ public class Matriz extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AActionPerformed
-     
+        int Columnas = Integer.parseInt(JOptionPane.showInputDialog("Cantidad de Columnas"));
+        int Filas = Integer.parseInt(JOptionPane.showInputDialog("Cantidad de Filas"));
+        String[][] Va = new String[Filas][Columnas];
+        for (int i = 0; i < Columnas; i++) {
+            for (int a = 0; a < Filas; a++) {
+                Va[i][a] = String.valueOf((int) (Math.random() * 20 + 1));
+            }
+        }
+        Q.setModel(new javax.swing.table.DefaultTableModel{
+            Va, 
+            new String[]{
+                "", "", "", "", "", "", "", "", ""
+            }  
+        );
+                
+                
+    }
     }//GEN-LAST:event_AActionPerformed
 
     /**
@@ -166,7 +177,7 @@ public class Matriz extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton A;
+    private javax.swing.JTable Q;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
 }
